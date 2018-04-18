@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml" />
+
+    <appender name="DEBUG_LOG_FILE"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>DEBUG</level>
+        </filter>
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+            <charset>utf8</charset>
+        </encoder>
+        <file>logs/uga-portal.log</file>
+        <rollingPolicy class="uga.framework.log.MySizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>logs/uga-portal.%d{yyyyMMdd_HHmmss}.%i.log</fileNamePattern>
+            <MaxFileSize>5MB</MaxFileSize>
+        </rollingPolicy>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="DEBUG_LOG_FILE"/>
+    </root>
+
+    <logger name="uga" level="DEBUG"/>
+    <logger name="org.springframework.web.filter.CommonsRequestLoggingFilter" level="DEBUG"/>
+    <logger name="org.jooq" level="DEBUG" />
+</configuration>

@@ -1,0 +1,5 @@
+rootProject.name = 'uga'
+include 'portal'
+include 'admin'
+include 'common'
+

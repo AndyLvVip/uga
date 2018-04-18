@@ -1,0 +1,7 @@
+logging:
+  config: classpath:config/logback.xml
+spring:
+  application:
+    name: uga-portal
+server:
+  port: 9090
